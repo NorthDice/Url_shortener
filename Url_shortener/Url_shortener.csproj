@@ -12,4 +12,10 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Url_shortener.Application\Url_shortener.Application.csproj" />
+    <ProjectReference Include="..\Url_shortener.Logic\Url_shortener.Logic.csproj" />
+    <ProjectReference Include="..\Url_shortener.Persistence\Url_shortener.Persistence.csproj" />
+  </ItemGroup>
+
 </Project>

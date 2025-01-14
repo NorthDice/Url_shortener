@@ -1,7 +1,12 @@
+using Url_shortener.Application.Interfaces;
+using Url_shortener.Persistence.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddRazorPages();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
 
 var app = builder.Build();
 
