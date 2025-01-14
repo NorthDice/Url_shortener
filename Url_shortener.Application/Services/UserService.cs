@@ -26,7 +26,7 @@ namespace Url_shortener.Application.Services
         {
             var hashedPassword = _passwordHasher.Generate(password);
 
-            var user = User.Create(Guid.NewGuid(), userName, password, email);
+            var user = User.Create(Guid.NewGuid(), userName, hashedPassword, email);
 
             await _userRepository.Add(user);
         }

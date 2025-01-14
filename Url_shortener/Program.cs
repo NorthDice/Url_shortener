@@ -49,6 +49,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.MapControllers();
 
 app.UseCookiePolicy(new CookiePolicyOptions
 {

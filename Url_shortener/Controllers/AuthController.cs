@@ -19,11 +19,11 @@ namespace Url_shortener.Controllers
         public async Task<IActionResult> Register(RegisterUserRequest request)
         {
             await _userService.Register(request.Username, request.Email, request.Password);
-            return View();
+            return Ok();
         }
 
         [HttpPost("login")]
-        public async Task<IResult> Login(LoginUserRequest request)
+        public async Task<IActionResult> Login(LoginUserRequest request)
         {
             if (ModelState.IsValid)
             {
@@ -31,7 +31,7 @@ namespace Url_shortener.Controllers
 
                 Response.Cookies.Append("Shortener", token);
             }
-            return Results.Ok();
+            return Ok();
         }
     }
 }
