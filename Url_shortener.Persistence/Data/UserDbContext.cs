@@ -12,12 +12,13 @@ using Url_shortener.Persistence.Repositories;
 namespace Url_shortener.Persistence.Data
 {
     public class UserDbContext(
-        DbContextOptions<UserDbContext> options,
-        IOptions<AuthorizationOptions> authOptions) : DbContext(options)
+       DbContextOptions<UserDbContext> options,
+       IOptions<AuthorizationOptions> authOptions) : DbContext(options)
     {
-
         public DbSet<UserEntity> Users { get; set; }
+
         public DbSet<RoleEntity> Roles { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

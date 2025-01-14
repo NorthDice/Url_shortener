@@ -26,15 +26,15 @@ services.AddScoped<UserService>();
 
 string connection = builder.Configuration.GetConnectionString("DefaultConnection");
 services.AddDbContext<UserDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(connection));
 
 services.Configure<JwtOptions>(builder.Configuration.GetSection("JwtOptions"));
 services.Configure<AuthorizationOptions>(builder.Configuration.GetSection(nameof(AuthorizationOptions)));
 
-services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Shortener API", Version = "v1" });
-});
+//services.AddSwaggerGen(c =>
+//{
+//    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Shortener API", Version = "v1" });
+//});
 
 var app = builder.Build();
 
@@ -60,11 +60,11 @@ app.UseCookiePolicy(new CookiePolicyOptions
 app.UseAuthorization();
 app.UseAuthentication();
 
-app.UseSwagger(); // Добавлено для включения Swagger middleware
-app.UseSwaggerUI(c =>
-{
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Shortener API V1");
-    c.RoutePrefix = string.Empty;
-});
+//app.UseSwagger(); // Добавлено для включения Swagger middleware
+//app.UseSwaggerUI(c =>
+//{
+//    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Shortener API V1");
+//    c.RoutePrefix = string.Empty;
+//});
 
 app.Run();
