@@ -1,4 +1,6 @@
 using Url_shortener.Application.Interfaces;
+using Url_shortener.Logic.Interfaces;
+using Url_shortener.Logic.Models;
 using Url_shortener.Persistence.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IJwtProvider, JwtProvider>();
 
 
 var app = builder.Build();
