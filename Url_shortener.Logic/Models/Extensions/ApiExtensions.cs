@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Url_shortener.Logic.Entities
+namespace Url_shortener.Logic.Models.Extensions
 {
-    public class UserEntity
+    internal class ApiExtensions
     {
     }
 }
