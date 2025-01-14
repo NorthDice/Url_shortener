@@ -9,6 +9,7 @@ using Url_shortener.Logic.Models.JWT;
 using Url_shortener.Persistence.Data;
 using Url_shortener.Persistence.Mapper;
 using Url_shortener.Persistence.Repositories;
+using Microsoft.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,17 +32,16 @@ services.AddDbContext<UserDbContext>(options =>
 services.Configure<JwtOptions>(builder.Configuration.GetSection("JwtOptions"));
 services.Configure<AuthorizationOptions>(builder.Configuration.GetSection(nameof(AuthorizationOptions)));
 
-//services.AddSwaggerGen(c =>
-//{
-//    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Shortener API", Version = "v1" });
-//});
+services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Shortener API", Version = "v1" });
+});
 
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
-
     app.UseHsts();
 }
 
@@ -60,11 +60,25 @@ app.UseCookiePolicy(new CookiePolicyOptions
 app.UseAuthorization();
 app.UseAuthentication();
 
-//app.UseSwagger(); // Добавлено для включения Swagger middleware
-//app.UseSwaggerUI(c =>
-//{
-//    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Shortener API V1");
-//    c.RoutePrefix = string.Empty;
-//});
+app.UseSwagger(); // Добавлено для включения Swagger middleware
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Shortener API V1");
+});
 
-app.Run();
+var loggerFactory = LoggerFactory.Create(builder =>
+{
+    builder.AddConsole();
+    builder.AddDebug();
+});
+var logger = loggerFactory.CreateLogger<Program>();
+
+try
+{
+    app.Run();
+}
+catch (Exception ex)
+{
+    logger.LogError(ex, "An error occurred while starting the application.");
+    throw;
+}
