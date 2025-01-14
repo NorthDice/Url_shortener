@@ -10,4 +10,8 @@
     <ProjectReference Include="..\Url_shortener.Logic\Url_shortener.Logic.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
+
 </Project>
