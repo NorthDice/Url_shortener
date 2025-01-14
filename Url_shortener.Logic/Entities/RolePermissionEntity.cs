@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Url_shortener.Logic.Entities
 {
-    internal class RolePermissionEntity
+    public class RolePermissionEntity
     {
         public int RoleId { get; set; }
         public RoleEntity Role { get; set; }
