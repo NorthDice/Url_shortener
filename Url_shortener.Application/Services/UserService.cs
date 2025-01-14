@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Url_shortener.Application.Services
 {
-    internal class UserService
+    public class UserService
     {
     }
 }

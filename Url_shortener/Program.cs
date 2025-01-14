@@ -1,15 +1,41 @@
+using Microsoft.AspNetCore.CookiePolicy;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using Url_shortener.Application.Interfaces;
+using Url_shortener.Application.Services;
 using Url_shortener.Logic.Interfaces;
+using Url_shortener.Logic.Models;
 using Url_shortener.Logic.Models.JWT;
 using Url_shortener.Persistence.Data;
+using Url_shortener.Persistence.Mapper;
+using Url_shortener.Persistence.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
-builder.Services.AddRazorPages();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IJwtProvider, JwtProvider>();
+var services = builder.Services;
 
+services.AddControllers();
+
+services.AddAutoMapper(typeof(UserMapper).Assembly);
+
+services.AddScoped<IUserRepository, UserRepository>();
+services.AddScoped<IJwtProvider, JwtProvider>();
+services.AddScoped<IPasswordHasher, PasswordHasher>();
+
+services.AddScoped<UserService>();
+
+string connection = builder.Configuration.GetConnectionString("DefaultConnection");
+services.AddDbContext<UserDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+services.Configure<JwtOptions>(builder.Configuration.GetSection("JwtOptions"));
+services.Configure<AuthorizationOptions>(builder.Configuration.GetSection(nameof(AuthorizationOptions)));
+
+services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Shortener API", Version = "v1" });
+});
 
 var app = builder.Build();
 
@@ -26,8 +52,20 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthorization();
+app.UseCookiePolicy(new CookiePolicyOptions
+{
+    MinimumSameSitePolicy = SameSiteMode.Strict,
+    HttpOnly = HttpOnlyPolicy.Always,
+    Secure = CookieSecurePolicy.Always
+});
 
-app.MapRazorPages();
+app.UseAuthorization();
+app.UseAuthentication();
+
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Shortener API V1");
+    c.RoutePrefix = string.Empty; 
+});
 
 app.Run();
