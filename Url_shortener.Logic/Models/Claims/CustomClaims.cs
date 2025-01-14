@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Url_shortener.Logic.Models.Claims
 {
-    internal class CustomClaims
+    public class CustomClaims
     {
-        internal const string UserId = "userId";
+        public const string UserId = "userId";
     }
 }
