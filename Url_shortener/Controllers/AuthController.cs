@@ -9,17 +9,22 @@ namespace Url_shortener.Controllers
     {
         private readonly UserService _userService;
 
-        
-
+        [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterUserRequest request)
         {
-            await _userService.Register(request.UserName, request.Email, request.Password);
+            await _userService.Register(request.Username, request.Email, request.Password);
             return View();
         }
 
-        public IActionResult Login(LoginUserRequest request)
+        public async Task<IResult> Login(LoginUserRequest request)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                var token = await _userService.Login(request.Email, request.Password);
+
+                Response.Cookies.Append("Shortener", token);
+            }
+            return Results.Ok();
         }
     }
 }
