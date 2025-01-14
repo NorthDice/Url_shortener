@@ -12,7 +12,6 @@ using Url_shortener.Persistence.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
 var services = builder.Services;
 
 services.AddControllers();
@@ -39,11 +38,10 @@ services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
-    
+
     app.UseHsts();
 }
 
@@ -62,10 +60,11 @@ app.UseCookiePolicy(new CookiePolicyOptions
 app.UseAuthorization();
 app.UseAuthentication();
 
+app.UseSwagger(); // Добавлено для включения Swagger middleware
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Shortener API V1");
-    c.RoutePrefix = string.Empty; 
+    c.RoutePrefix = string.Empty;
 });
 
 app.Run();
