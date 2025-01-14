@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Url_shortener.Contracts;
 
 namespace Url_shortener.Controllers
 {
@@ -12,6 +13,11 @@ namespace Url_shortener.Controllers
         }
 
         public IActionResult Register(RegisterUserRequest request)
+        {
+            return View();
+        }
+
+        public IActionResult Login(LoginUserRequest request)
         {
             return View();
         }
