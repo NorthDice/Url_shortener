@@ -1,8 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Url_shortener.Logic.Interfaces;
 using Url_shortener.Logic.Models;
@@ -13,14 +12,15 @@ namespace Url_shortener.Persistence.Repositories
 {
     public class UrlRepository : IUrlRepository
     {
-
         private readonly ApplicationDbContext _context;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public UrlRepository(ApplicationDbContext context)
+        
+        public UrlRepository(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
+            _httpContextAccessor = httpContextAccessor;
         }
-
 
         public async Task<UrlManagment> AddUrlAsync(UrlManagment url)
         {
@@ -32,10 +32,10 @@ namespace Url_shortener.Persistence.Repositories
         public async Task<UrlManagment?> GetUrlByIdAsync(Guid id)
         {
             return await _context.Urls
-                .FirstOrDefaultAsync(u => u.UserId == id);
+                .FirstOrDefaultAsync(u => u.Id == id);
         }
 
-        public async Task<IEnumerable<UrlManagment>> GetUrlsByUserIdAsync(int id)
+        public async Task<IEnumerable<UrlManagment>> GetUrlsByUserIdAsync(Guid id)
         {
             return await _context.Urls
                 .Where(u => u.Id == id)
@@ -47,4 +47,5 @@ namespace Url_shortener.Persistence.Repositories
             return await _context.Urls.AnyAsync(u => u.Code == code);
         }
     }
+
 }

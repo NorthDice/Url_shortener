@@ -16,6 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 
 services.AddControllers();
+services.AddHttpContextAccessor();
 
 services.AddAutoMapper(typeof(UserMapper).Assembly);
 
@@ -23,10 +24,11 @@ services.AddScoped<IUserRepository, UserRepository>();
 services.AddScoped<IJwtProvider, JwtProvider>();
 services.AddScoped<IPasswordHasher, PasswordHasher>();
 services.AddScoped<IUrlRepository, UrlRepository>();
+services.AddScoped<IUrlShorteningService, UrlShorteningService>();
 
 services.AddScoped<UserService>();
 services.AddScoped<UrlService>();
-services.AddScoped<UrlShorteningService>();
+
 
 string connection = builder.Configuration.GetConnectionString("DefaultConnection");
 services.AddDbContext<ApplicationDbContext>(options =>
@@ -74,6 +76,7 @@ app.UseCookiePolicy(new CookiePolicyOptions
 
 app.UseAuthorization();
 app.UseAuthentication();
+
 
 app.UseSwagger();
 app.UseSwaggerUI(c =>

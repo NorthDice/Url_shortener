@@ -8,7 +8,7 @@ namespace Url_shortener.Logic.Models.Url
 {
     public class UrlManagment
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string OriginalUrl { get; set; } = string.Empty;
         public string ShortenedUrl { get; set; } = string.Empty;
         public string Code { get; set; } = string.Empty;
