@@ -32,8 +32,7 @@ namespace Url_shortener.Persistence.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Urls");
+            
         }
     }
 }

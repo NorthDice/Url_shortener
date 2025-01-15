@@ -29,13 +29,13 @@ namespace Url_shortener.Persistence.Repositories
             return url;
         }
 
-        public async Task<UrlManagment?> GetUrlByIdAsync(Guid id)
+        public async Task<UrlManagment?> GetUrlByIdAsync(int id)
         {
             return await _context.Urls
                 .FirstOrDefaultAsync(u => u.Id == id);
         }
 
-        public async Task<IEnumerable<UrlManagment>> GetUrlsByUserIdAsync(Guid id)
+        public async Task<IEnumerable<UrlManagment>> GetUrlsByUserIdAsync(int id)
         {
             return await _context.Urls
                 .Where(u => u.Id == id)

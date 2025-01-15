@@ -36,9 +36,6 @@ namespace Url_shortener.Application.Services
             return await _urlRepository.AddUrlAsync(url);
         }
 
-        public async Task<IEnumerable<UrlManagment>> GetUrlsForUserAsync(Guid userId)
-        {
-            return await _urlRepository.GetUrlsByUserIdAsync(userId);
-        }
+       
     }
 }

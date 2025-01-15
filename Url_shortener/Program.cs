@@ -26,6 +26,7 @@ services.AddScoped<IPasswordHasher, PasswordHasher>();
 services.AddScoped<IUrlRepository, UrlRepository>();
 services.AddScoped<IUrlShorteningService, UrlShorteningService>();
 
+
 services.AddScoped<UserService>();
 services.AddScoped<UrlService>();
 
