@@ -11,8 +11,8 @@ using Url_shortener.Persistence.Repositories;
 
 namespace Url_shortener.Persistence.Data
 {
-    public class UserDbContext(
-       DbContextOptions<UserDbContext> options,
+    public class ApplicationDbContext(
+       DbContextOptions<ApplicationDbContext> options,
        IOptions<AuthorizationOptions> authOptions) : DbContext(options)
     {
         public DbSet<UserEntity> Users { get; set; }

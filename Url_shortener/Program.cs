@@ -26,7 +26,7 @@ services.AddScoped<IPasswordHasher, PasswordHasher>();
 services.AddScoped<UserService>();
 
 string connection = builder.Configuration.GetConnectionString("DefaultConnection");
-services.AddDbContext<UserDbContext>(options =>
+services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connection));
 
 services.Configure<JwtOptions>(builder.Configuration.GetSection("JwtOptions"));

@@ -11,7 +11,7 @@ using Url_shortener.Persistence.Data;
 
 namespace Url_shortener.Persistence.Migrations
 {
-    [DbContext(typeof(UserDbContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20250114174248_InitialCreate")]
     partial class InitialCreate
     {

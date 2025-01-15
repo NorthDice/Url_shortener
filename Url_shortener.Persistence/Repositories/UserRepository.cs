@@ -14,10 +14,10 @@ namespace Url_shortener.Persistence.Data
 {
     public class UserRepository : IUserRepository
     {
-        private readonly UserDbContext _context;
+        private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
 
-        public UserRepository(UserDbContext context, IMapper mapper)
+        public UserRepository(ApplicationDbContext context, IMapper mapper)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));

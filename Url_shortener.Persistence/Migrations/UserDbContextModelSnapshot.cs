@@ -10,7 +10,7 @@ using Url_shortener.Persistence.Data;
 
 namespace Url_shortener.Persistence.Migrations
 {
-    [DbContext(typeof(UserDbContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     partial class UserDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
