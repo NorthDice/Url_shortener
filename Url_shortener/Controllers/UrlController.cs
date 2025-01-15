@@ -60,6 +60,14 @@ namespace Url_shortener.Controllers
 
             return Redirect(shortenedUrl.OriginalUrl);
         }
+
+        [HttpGet("AllUrls")]
+        public async Task<IActionResult> GetAllUrls()
+        {
+            var urls = await _dbContext.Urls.ToListAsync();
+            return Ok(urls);
+        }
+
     }
 
 }

@@ -18,6 +18,16 @@ var services = builder.Services;
 services.AddControllers();
 services.AddHttpContextAccessor();
 
+services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins("http://localhost:5175")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
 services.AddAutoMapper(typeof(UserMapper).Assembly);
 
 services.AddScoped<IUserRepository, UserRepository>();
@@ -26,10 +36,8 @@ services.AddScoped<IPasswordHasher, PasswordHasher>();
 services.AddScoped<IUrlRepository, UrlRepository>();
 services.AddScoped<IUrlShorteningService, UrlShorteningService>();
 
-
 services.AddScoped<UserService>();
 services.AddScoped<UrlService>();
-
 
 string connection = builder.Configuration.GetConnectionString("DefaultConnection");
 services.AddDbContext<ApplicationDbContext>(options =>
@@ -41,17 +49,6 @@ services.Configure<AuthorizationOptions>(builder.Configuration.GetSection(nameof
 services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Shortener API", Version = "v1" });
-});
-
-services.AddCors(options =>
-{
-    options.AddDefaultPolicy(policy =>
-    {
-        policy.WithOrigins("http://localhost:5173/");
-        policy.AllowAnyHeader();
-        policy.AllowAnyMethod();
-    });
-
 });
 
 var app = builder.Build();
@@ -66,7 +63,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-app.MapControllers();
+
+app.UseCors(); 
 
 app.UseCookiePolicy(new CookiePolicyOptions
 {
@@ -78,14 +76,13 @@ app.UseCookiePolicy(new CookiePolicyOptions
 app.UseAuthorization();
 app.UseAuthentication();
 
-
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Shortener API V1");
 });
 
-app.UseCors();
+app.MapControllers(); 
 
 var loggerFactory = LoggerFactory.Create(builder =>
 {
@@ -94,6 +91,4 @@ var loggerFactory = LoggerFactory.Create(builder =>
 });
 var logger = loggerFactory.CreateLogger<Program>();
 
-
 app.Run();
-
