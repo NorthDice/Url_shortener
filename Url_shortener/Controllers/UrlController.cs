@@ -36,7 +36,7 @@ namespace Url_shortener.Controllers
             {
                 OriginalUrl = request.Url,
                 Code = code,
-                ShortenedUrl = $"{Request.Scheme}://{Request.Host}/{code}",
+                ShortenedUrl = $"{Request.Scheme}://{Request.Host}/api/Url/{code}",
                 CreatedAt = DateTime.UtcNow
             };
 
