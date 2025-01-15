@@ -26,6 +26,7 @@ services.AddScoped<IUrlRepository, UrlRepository>();
 
 services.AddScoped<UserService>();
 services.AddScoped<UrlService>();
+services.AddScoped<UrlShorteningService>();
 
 string connection = builder.Configuration.GetConnectionString("DefaultConnection");
 services.AddDbContext<ApplicationDbContext>(options =>
