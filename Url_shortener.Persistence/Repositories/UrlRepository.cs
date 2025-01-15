@@ -41,5 +41,10 @@ namespace Url_shortener.Persistence.Repositories
                 .Where(u => u.Id == id)
                 .ToListAsync();
         }
+
+        public async Task<bool> UrlExistsAsync(string code)
+        {
+            return await _context.Urls.AnyAsync(u => u.Code == code);
+        }
     }
 }

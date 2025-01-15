@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Url_shortener.Logic.Entities;
+using Url_shortener.Logic.Models;
 using Url_shortener.Logic.Models.Url;
 using Url_shortener.Persistence.Configurations;
 using Url_shortener.Persistence.Repositories;

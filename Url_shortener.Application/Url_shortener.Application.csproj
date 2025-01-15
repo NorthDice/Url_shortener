@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Url_shortener.Logic\Url_shortener.Logic.csproj" />
+    <ProjectReference Include="..\Url_shortener.Persistence\Url_shortener.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

@@ -12,6 +12,7 @@ namespace Url_shortener.Logic.Interfaces
         Task<UrlManagment> AddUrlAsync(UrlManagment url);
         Task<IEnumerable<UrlManagment>> GetUrlsByUserIdAsync(int id);
         Task<UrlManagment> GetUrlByIdAsync(Guid id);
+        Task<bool> UrlExistsAsync(string code);
     }
 
 }
