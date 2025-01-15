@@ -10,8 +10,8 @@ namespace Url_shortener.Logic.Interfaces
     public interface IUrlRepository
     {
         Task<UrlManagment> AddUrlAsync(UrlManagment url);
-        Task<IEnumerable<UrlManagment>> GetUrlsByUserIdAsync(int userId);
-        Task<UrlManagment> GetUrlByIdAsync(int id);
+        Task<IEnumerable<UrlManagment>> GetUrlsByUserIdAsync(int id);
+        Task<UrlManagment> GetUrlByIdAsync(Guid id);
     }
 
 }
