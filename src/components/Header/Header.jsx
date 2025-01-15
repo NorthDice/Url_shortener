@@ -1,6 +1,7 @@
 import React from 'react'
 import "./Header.css"
 import logo from "../../assets/logo.png"
+import { Link } from 'react-router-dom';
 
 export default function Header() {
     
@@ -18,15 +19,15 @@ export default function Header() {
 
         <nav className="header__nav">
             <ul className="nav-list">
-                <li className="nav-list__item"><a className="nav-list__link" href="">TABLE VIEW</a></li>
-                <li className="nav-list__item"><a className="nav-list__link" href="">INFO VIEW</a></li>
-                <li className="nav-list__item"><a className="nav-list__link" href="">ABOUT VIEW</a></li>
+                <li className="nav-list__item"><Link className="nav-list__link" to="/table">TABLE VIEW</Link></li>
+                <li className="nav-list__item"><Link className="nav-list__link" to="/info">INFO VIEW</Link></li>
+                <li className="nav-list__item"><Link className="nav-list__link" to="/about">ABOUT VIEW</Link></li>
             </ul>
         </nav>
 
         <div className="action-section">
-            <a className="action-section__item">NEW ACCOUNT</a>
-            <a className="action-section__item">SIGN IN</a>
+            <Link className="action-section__item" to="/newAccount">NEW ACCOUNT</Link>
+            <Link className="action-section__item" to="/signIn">SIGN IN</Link>
         </div>
 
     </header>

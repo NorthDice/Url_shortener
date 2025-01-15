@@ -7,11 +7,11 @@
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-    background-color: #845ec2;
+    background-color: #8475bb;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
 }
 .header a:hover {
-    color: #0C969C;
+    color: #947ECB;
 }
 .nav-list__link {
     text-decoration: none;
@@ -47,25 +47,7 @@
     transition: color 0.3s ease;
 }
 .action-section a:hover{
-    color: #0C969C;
+    color: #947ECB;
+    cursor: pointer;
 }
-.nav-list a::after {
-    content: "";
-    display: block;
-    position: absolute;
-    background: #032F30;
-    transition: opacity 0.4s ease;
-    height: 2px;
-    opacity: 0;
-    left: 0;
-    right: 0;
-    bottom: -4px;
-}
-.nav-list a.active {
-    color: #032F30;
-    font-weight: bold;
-    
-}
-.nav-list a.active::after {
-    opacity: 1;
-}
+

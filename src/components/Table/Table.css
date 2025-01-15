@@ -1,0 +1,37 @@
+.table-view__container {
+    width: 85%;
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+    
+}
+
+.table-view__table {
+    width: 85%;
+    border-collapse: collapse;
+    font-size: 1rem;
+    color: #FFFFFF;
+    border-radius: 8px;
+    overflow: hidden; 
+    
+}
+
+
+.table-view__header-cell {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #FFFFFF;
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 2px solid #333;
+}
+
+
+
+.table-view__cell {
+    padding: 0.8rem;
+    border-bottom: 1px solid #444;
+    text-align: center;
+    word-wrap: break-word;
+    word-break: break-word;
+}

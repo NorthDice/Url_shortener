@@ -17,27 +17,6 @@
     padding: 1rem;
 }
 
-.table-view__table {
-    width: 60%;
-    border-collapse: collapse;
-    font-size: 1rem; 
-    color: #FFFFFF; /
-    
-}
-
-.table-view__table th {
-    font-weight: bold;
-    font-size: 1.2rem;
-    color: #CCCCCC;
-    padding: 1rem;
-    border-bottom: 2px solid #333;
-}
-
-.table-view__table td {
-    padding: 0.8rem;
-    border-bottom: 1px solid #333;
-    text-align: center;
-}
 
 .table-view__buttons {
     display: flex;
