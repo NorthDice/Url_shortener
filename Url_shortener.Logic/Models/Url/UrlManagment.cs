@@ -11,5 +11,7 @@ namespace Url_shortener.Logic.Models.Url
         public int Id { get; set; }
         public string OriginalUrl { get; set; } = string.Empty;
         public string ShortenedUrl { get; set; } = string.Empty;
+        public Guid UserId { get; set; }
+        public DateTime CreatedAt { get; set; }
     }
 }
