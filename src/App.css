@@ -1,0 +1,9 @@
+body {
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden; 
+    background-image: linear-gradient(to bottom, #845ec2, #8d69c5, #9775c8, #9f80ca, #a88ccd, #b297d2, #bca3d6, #c6afdb, #d4bde4, #e1ccec, #eedbf6, #fbeaff);
+}
+.App {
+    padding-top: 5rem;
+}

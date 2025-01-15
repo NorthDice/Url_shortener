@@ -2,18 +2,18 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Header from './components/Header/Header'
+import TableView from './components/TableView/TableView'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <h3>
-          Header
-        </h3>
+      <div className="App__item">
+        <Header/>
+        <TableView/>
       </div>
-    </>
+    
   )
 }
 

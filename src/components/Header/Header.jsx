@@ -1,12 +1,16 @@
 import React from 'react'
+import "./Header.css"
+import {logo} from "../../assets/logo.png"
 
 export default function Header() {
-  return (
+    
+
+    return (
     <header className="header">
-        <div className="logo-section__item">
+        <div className="logo-section">
             <a className="logo__item"></a>
                 <img className="image__item"
-                    src=""
+                    src={logo}
                     alt="shorten-url"
                 />
             <p className="paragraph__item">SHORTEN URL</p>
@@ -14,10 +18,9 @@ export default function Header() {
 
         <nav className="header__nav">
             <ul className="nav-list">
-                <li className="nav-list__item"><a className="nav-list__link" href=""></a></li>
-                <li className="nav-list__item"><a className="nav-list__link" href=""></a></li>
-                <li className="nav-list__item"><a className="nav-list__link" href=""></a></li>
-                <li className="nav-list__item"><a className="nav-list__link" href=""></a></li>
+                <li className="nav-list__item"><a className="nav-list__link" href="">TABLE VIEW</a></li>
+                <li className="nav-list__item"><a className="nav-list__link" href="">INFO VIEW</a></li>
+                <li className="nav-list__item"><a className="nav-list__link" href="">ABOUT VIEW</a></li>
             </ul>
         </nav>
 

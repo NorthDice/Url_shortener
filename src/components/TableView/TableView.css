@@ -1,0 +1,8 @@
+.table-view {
+    height: 25rem;
+    width: 95rem;
+    margin-bottom: 7rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
