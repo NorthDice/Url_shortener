@@ -25,6 +25,17 @@ namespace Url_shortener.Persistence.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<UrlManagment>(builder =>
+            {
+                builder
+                    .Property(shortenedUrl => shortenedUrl.Code)
+                    .HasMaxLength(ShortLinkSettings.Length);
+
+                builder
+                    .HasIndex(shortenedUrl => shortenedUrl.Code)
+                    .IsUnique();
+            });
+
             modelBuilder.ApplyConfiguration(new UserConfiguration());
 
             modelBuilder.ApplyConfiguration(new PermissionConfiguration());
