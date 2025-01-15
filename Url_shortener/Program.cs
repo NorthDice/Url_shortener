@@ -37,6 +37,17 @@ services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Shortener API", Version = "v1" });
 });
 
+services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins("http://localhost:5173/");
+        policy.AllowAnyHeader();
+        policy.AllowAnyMethod();
+    });
+
+});
+
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
@@ -61,11 +72,13 @@ app.UseCookiePolicy(new CookiePolicyOptions
 app.UseAuthorization();
 app.UseAuthentication();
 
-app.UseSwagger(); // Добавлено для включения Swagger middleware
+app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Shortener API V1");
 });
+
+app.UseCors();
 
 var loggerFactory = LoggerFactory.Create(builder =>
 {
@@ -74,12 +87,6 @@ var loggerFactory = LoggerFactory.Create(builder =>
 });
 var logger = loggerFactory.CreateLogger<Program>();
 
-try
-{
-    app.Run();
-}
-catch (Exception ex)
-{
-    logger.LogError(ex, "An error occurred while starting the application.");
-    throw;
-}
+
+app.Run();
+
