@@ -4,7 +4,7 @@
     margin: 8rem auto;
     padding: 2rem;
     border-radius: 0.5rem;
-    background-color: #947ECB;
+    background-color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     color: #ffffff;
   }
@@ -14,7 +14,7 @@
     margin-bottom: 1.5rem;
     font-size: 1.5rem;
     font-weight: bold;
-    color: #FFFFFF;
+    color: #6546B5;
   }
   
   .form-group {
@@ -25,7 +25,7 @@
     display: block;
     margin-bottom: 0.5rem;
     font-size: 1rem;
-    color: #cccccc;
+    color: #050505;
   }
   
   .form-group input {
@@ -36,6 +36,7 @@
     font-size: 1rem;
     color: black;
     box-sizing: border-box;
+    border: 2px solid #8465D3;
   }
   
   .form-group input:focus {
