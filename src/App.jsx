@@ -8,6 +8,8 @@ import TableView from './components/TableView/TableView'
 import { fetchUrls } from './services/urls'
 import InformationView from './components/InformationView/InformationView'
 import AboutView from './components/AboutView/AboutView'
+import NewAccountView from './components/NewAccountView/NewAccountView'
+import SignInView from './components/SignInView/SignInView'
 
 function App() {
   
@@ -18,7 +20,8 @@ function App() {
         <Route path="/table" element={<TableView />} />
         <Route path="/info" element={<InformationView />} />
         <Route path="/about" element={<AboutView />} />
-        
+        <Route path="/newAccount" element={<NewAccountView />} />
+        <Route path="/signIn" element={<SignInView />} />
       </Routes>
       </div>
     
