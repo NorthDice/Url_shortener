@@ -5,7 +5,7 @@ using Url_shortener.Contracts;
 namespace Url_shortener.Controllers
 {
     [ApiController]
-    [Route("auth")]
+    [Route("[controller]")]
     public class AuthController : Controller
     {
         private readonly UserService _userService;

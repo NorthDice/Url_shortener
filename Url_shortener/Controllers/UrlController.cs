@@ -9,7 +9,7 @@ using Url_shortener.Persistence.Data;
 namespace Url_shortener.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     public class UrlController : ControllerBase
     {
         private readonly IUrlShorteningService _urlShorteningService;
@@ -36,7 +36,7 @@ namespace Url_shortener.Controllers
             {
                 OriginalUrl = request.Url,
                 Code = code,
-                ShortenedUrl = $"{Request.Scheme}://{Request.Host}/api/Url/{code}",
+                ShortenedUrl = $"{Request.Scheme}://{Request.Host}/Url/{code}",
                 CreatedAt = DateTime.UtcNow
             };
 
