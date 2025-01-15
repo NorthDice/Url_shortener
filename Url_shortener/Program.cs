@@ -22,8 +22,10 @@ services.AddAutoMapper(typeof(UserMapper).Assembly);
 services.AddScoped<IUserRepository, UserRepository>();
 services.AddScoped<IJwtProvider, JwtProvider>();
 services.AddScoped<IPasswordHasher, PasswordHasher>();
+services.AddScoped<IUrlRepository, UrlRepository>();
 
 services.AddScoped<UserService>();
+services.AddScoped<UrlService>();
 
 string connection = builder.Configuration.GetConnectionString("DefaultConnection");
 services.AddDbContext<ApplicationDbContext>(options =>
