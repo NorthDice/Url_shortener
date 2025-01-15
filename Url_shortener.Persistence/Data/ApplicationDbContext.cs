@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Url_shortener.Logic.Entities;
+using Url_shortener.Logic.Models.Url;
 using Url_shortener.Persistence.Configurations;
 using Url_shortener.Persistence.Repositories;
 
@@ -18,6 +19,8 @@ namespace Url_shortener.Persistence.Data
         public DbSet<UserEntity> Users { get; set; }
 
         public DbSet<RoleEntity> Roles { get; set; }
+
+        public DbSet<UrlManagment> Urls { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
