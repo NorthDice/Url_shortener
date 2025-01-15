@@ -7,6 +7,8 @@
     justify-content: space-between;
     align-items: center;
     z-index: 100;
+    background-color: #845ec2;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
 }
 .header a:hover {
     color: #0C969C;
