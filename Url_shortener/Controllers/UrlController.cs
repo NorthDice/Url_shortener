@@ -30,6 +30,14 @@ namespace Url_shortener.Controllers
                 return BadRequest("The specified URL is invalid.");
             }
 
+            var existingUrl = await _dbContext.Urls
+                .SingleOrDefaultAsync(u => u.OriginalUrl == request.Url);
+
+            if (existingUrl != null)
+            {
+                return Conflict("The URL already exists in the database.");
+            }
+
             var code = await _urlShorteningService.GenerateUniqueCodeAsync();
 
             var shortenedUrl = new UrlManagment
