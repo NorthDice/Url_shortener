@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -35,7 +36,6 @@ services.AddScoped<IJwtProvider, JwtProvider>();
 services.AddScoped<IPasswordHasher, PasswordHasher>();
 services.AddScoped<IUrlRepository, UrlRepository>();
 services.AddScoped<IUrlShorteningService, UrlShorteningService>();
-
 services.AddScoped<UserService>();
 services.AddScoped<UrlService>();
 
@@ -53,18 +53,42 @@ services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-if (!app.Environment.IsDevelopment())
+
+var frontendPath = @"C:\Users\usuario\Desktop\HTML Projects\Url_shortener\url_shortener";
+
+var reactDevServer = new ProcessStartInfo
 {
-    app.UseExceptionHandler("/Error");
-    app.UseHsts();
+    FileName = "cmd.exe",
+    Arguments = "/c npm run dev",
+    WorkingDirectory = frontendPath,
+    RedirectStandardOutput = true,
+    RedirectStandardError = true,
+    UseShellExecute = false,
+    CreateNoWindow = true
+};
+
+try
+{
+    Process.Start(reactDevServer);
+    Console.WriteLine("Frontend (React) server started...");
 }
+catch (Exception ex)
+{
+    Console.WriteLine($"Failed to start frontend server: {ex.Message}");
+}
+
+Task.Run(() => Process.Start(new ProcessStartInfo
+{
+    FileName = "http://localhost:5175/table",
+    UseShellExecute = true
+}));
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseCors(); 
+app.UseCors();
 
 app.UseCookiePolicy(new CookiePolicyOptions
 {
@@ -82,7 +106,7 @@ app.UseSwaggerUI(c =>
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Shortener API V1");
 });
 
-app.MapControllers(); 
+app.MapControllers();
 
 var loggerFactory = LoggerFactory.Create(builder =>
 {
