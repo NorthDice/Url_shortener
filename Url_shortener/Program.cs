@@ -23,7 +23,7 @@ services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
-        policy.WithOrigins("http://localhost:5175")
+        policy.WithOrigins("http://localhost:5179")
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
@@ -79,7 +79,7 @@ catch (Exception ex)
 
 Task.Run(() => Process.Start(new ProcessStartInfo
 {
-    FileName = "http://localhost:5175/table",
+    FileName = "http://localhost:5179/table",
     UseShellExecute = true
 }));
 
