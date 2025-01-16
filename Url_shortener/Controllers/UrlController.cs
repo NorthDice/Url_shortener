@@ -23,7 +23,7 @@ namespace Url_shortener.Controllers
 
      
         [HttpPost("shorten")]
-        public async Task<IActionResult> ShortenUrl([FromBody] ShortenUrlRequest request)
+        public async Task<IActionResult> CreateShortenedUrl([FromBody] ShortenUrlRequest request)
         {
             if (!Uri.TryCreate(request.Url, UriKind.Absolute, out _))
             {
@@ -65,8 +65,28 @@ namespace Url_shortener.Controllers
         public async Task<IActionResult> GetAllUrls()
         {
             var urls = await _dbContext.Urls.ToListAsync();
-            return Ok(urls);
+
+            return Ok(urls.Select(url => new GetUrlsResponse(url.Id, url.OriginalUrl, url.ShortenedUrl, url.UserId, url.CreatedAt)).ToList());
         }
+
+        [HttpDelete("DeleteUrl")]
+        public async Task<IActionResult> DeleteUrl(int id)
+        {
+            var urlToDelete = await _dbContext.Urls.SingleOrDefaultAsync(url => url.Id == id);
+
+            if (urlToDelete == null)
+            {
+                return NotFound("URL not found.");
+            }
+
+            _dbContext.Urls.Remove(urlToDelete);
+            await _dbContext.SaveChangesAsync();
+
+            return NoContent(); 
+        }
+
+
+
 
     }
 
