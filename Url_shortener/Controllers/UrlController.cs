@@ -80,26 +80,21 @@ namespace Url_shortener.Controllers
             }
 
             
-            var deletedUrl = new
-            {
-                id = urlToDelete.Id,
-                originalUrl = urlToDelete.OriginalUrl,
-                shortenedUrl = urlToDelete.ShortenedUrl,
-                userId = urlToDelete.UserId,
-                createdAt = urlToDelete.CreatedAt
-            };
+            var deletedUrlResponse = new DeleteUrlResponce(
+                urlToDelete.Id,
+                urlToDelete.OriginalUrl,
+                urlToDelete.ShortenedUrl,
+                urlToDelete.UserId,
+                urlToDelete.CreatedAt
+            );
 
             
             _dbContext.Urls.Remove(urlToDelete);
             await _dbContext.SaveChangesAsync();
 
-           
-            return Ok(deletedUrl);
+            
+            return Ok(deletedUrlResponse); 
         }
-
-
-
-
 
     }
 
