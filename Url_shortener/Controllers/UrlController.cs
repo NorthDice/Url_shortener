@@ -76,14 +76,27 @@ namespace Url_shortener.Controllers
 
             if (urlToDelete == null)
             {
-                return NotFound("URL not found.");
+                return NotFound(new { message = "URL not found." });
             }
 
+            
+            var deletedUrl = new
+            {
+                id = urlToDelete.Id,
+                originalUrl = urlToDelete.OriginalUrl,
+                shortenedUrl = urlToDelete.ShortenedUrl,
+                userId = urlToDelete.UserId,
+                createdAt = urlToDelete.CreatedAt
+            };
+
+            
             _dbContext.Urls.Remove(urlToDelete);
             await _dbContext.SaveChangesAsync();
 
-            return NoContent(); 
+           
+            return Ok(deletedUrl);
         }
+
 
 
 
