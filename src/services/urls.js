@@ -1,8 +1,10 @@
 import axios from 'axios';
 
+const apiUrl = "https://localhost:44367/Url";
+
 export const fetchUrls = async () => {
     try{
-        var response = await axios.get("https://localhost:44367/Url/AllUrls");
+        const response = await axios.get(`${apiUrl}/AllUrls`);
 
         return response.data;
     } catch (error) {
@@ -11,3 +13,14 @@ export const fetchUrls = async () => {
     }
 
 }
+export const addUrl = async (url) => {
+    try {
+      console.log("Sending URL:", url);  
+      const response = await axios.post(`${apiUrl}/Shorten`, { url });
+      console.log("Response from server:", response.data);  
+      return response.data;  
+    } catch (error) {
+      console.error('Error adding URL:', error);
+      return null;
+    }
+  };

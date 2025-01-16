@@ -1,9 +1,18 @@
+html, body {
+    height: 100%; 
+    margin: 0; 
+    overflow-x: hidden;
+}
+
+
 body {
     min-height: 100vh;
     margin: 0;
     overflow-x: hidden; 
     background: rgb(171,121,181);
     background: linear-gradient(0deg, rgba(171,121,181,1) 0%, rgba(148,126,203,1) 46%, rgba(132,117,187,1) 100%);
+    background-size: cover;
+    background-repeat: repeat;
 }
 .App {
     padding-top: 5rem;

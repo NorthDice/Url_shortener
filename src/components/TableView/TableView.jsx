@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "./TableView.css";
-import { fetchUrls } from "../../services/urls";
+import { fetchUrls, addUrl } from "../../services/urls"; 
 import Table from "../Table/Table";
 import Modal from "../Modal/Modal";
 import { useNavigate } from "react-router-dom";
 
 const TableView = () => {
-  const [urls, setUrls] = useState([]);
+  const [urls, setUrls] = useState([]); 
   const [isModalOpen, setIsModalOpen] = useState(false); 
   const [modalType, setModalType] = useState(""); 
   const [urlInput, setUrlInput] = useState(""); 
+  const [isUrlAdded, setIsUrlAdded] = useState(false);  
 
   const navigate = useNavigate();
 
@@ -17,14 +18,14 @@ const TableView = () => {
     const fetchData = async () => {
       try {
         const urlsData = await fetchUrls();
-        setUrls(urlsData);
+        setUrls(urlsData);  
       } catch (error) {
         console.error("Error fetching URLs:", error);
       }
     };
 
     fetchData();
-  }, []);
+  }, [isUrlAdded]);  
 
   const openAddModal = () => {
     setModalType("add");
@@ -50,6 +51,20 @@ const TableView = () => {
     navigate("/info"); 
   };
 
+  const handleAddUrl = async () => {
+    try {
+      const newUrl = await addUrl(urlInput); 
+      if (newUrl) {
+        setIsUrlAdded(true);  
+        closeModal();
+      } else {
+        console.error("Failed to add URL");
+      }
+    } catch (error) {
+      console.error("Error adding URL:", error);
+    }
+  };
+
   return (
     <div className="table-view">
       <div className="table-view__buttons">
@@ -66,25 +81,8 @@ const TableView = () => {
 
       <Modal
         isOpen={isModalOpen}
-        title={
-          modalType === "add"
-            ? "Add URL"
-            : modalType === "delete"
-            ? "Delete URL"
-            : "View URL"
-        }
-        onConfirm={() => {
-          console.log(
-            `${
-              modalType === "add"
-                ? "Adding URL"
-                : modalType === "delete"
-                ? "Deleting URL"
-                : "Viewing URL"
-            }: ${urlInput}`
-          );
-          closeModal();
-        }}
+        title={modalType === "add" ? "Add URL" : modalType === "delete" ? "Delete URL" : "View URL"}
+        onConfirm={handleAddUrl} 
         onCancel={closeModal}
       >
         <input

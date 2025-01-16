@@ -1,7 +1,7 @@
 import React from 'react';
-import './SignInForm.css';
+import './SignInView.css';
 
-const SignInForm = () => {
+const SignInView = () => {
   return (
     <div className="sign-in-container">
       <h1 className="sign-in-title">Sign In</h1>
@@ -32,4 +32,4 @@ const SignInForm = () => {
   );
 };
 
-export default SignInForm;
+export default SignInView;
