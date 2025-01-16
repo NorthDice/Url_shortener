@@ -1,0 +1,76 @@
+.about-container {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    padding: 2rem;
+    max-width: 60rem;
+    margin: 5rem auto;
+    border-radius: 1rem;
+    box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.1);
+    line-height: 1.6;
+  }
+  
+  .main-heading {
+    font-size: 36px;
+    font-weight: 600;
+    color: #2C3E50;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .intro-text {
+    font-size: 18px;
+    text-align: center;
+    color: #7f8c8d;
+    margin-bottom: 30px;
+  }
+  
+  .section-heading {
+    font-size: 24px;
+    font-weight: 500;
+    color: #8475BB;
+    margin-top: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .paragraph-text {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 25px;
+  }
+  
+  .feature-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 20px;
+  }
+  
+  .feature-list li {
+    font-size: 18px;
+    color: #34495E;
+    padding-left: 30px;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  
+  .feature-list li::before {
+    content: '✔';
+    color: #8475BB;
+    position: absolute;
+    left: 0;
+  }
+  
+  .cta {
+    text-align: center;
+    background-color: #8475BB;
+    padding: 15px;
+    border-radius: 8px;
+    color: white;
+  }
+  
+  .cta-text {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+  }
+  
