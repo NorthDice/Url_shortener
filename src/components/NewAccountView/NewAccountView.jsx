@@ -3,7 +3,7 @@ import './NewAccountView.css';
 
 const NewAccountView = () => {
   return (
-    <div className="registration-form">
+    <div className="registration-form-container">
       <h1 className="form-title">Create a New Account</h1>
       <form className="form">
         <div className="form-group">

@@ -1,63 +1,62 @@
 .sign-in-container {
-    width: 100%;
-    max-width: 400px;
-    margin: 10rem auto;
-    padding: 2rem;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .sign-in-title {
-    text-align: center;
-    margin-bottom: 2rem;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #4A4A4A;
-  }
-  
-  .sign-in-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group {
-    margin-bottom: 1.5rem;
-  }
-  
-  .form-label {
-    font-size: 1rem;
-    font-weight: 500;
-    color: #333;
-  }
-  
-  .form-input {
-    width: 100%;
-    padding: 0.8rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-top: 0.5rem;
-    outline: none;
-  }
-  
-  .form-input:focus {
-    border-color: #7765A3;
-  }
-  
-  .form-button {
-    padding: 1rem;
-    font-size: 1rem;
-    font-weight: bold;
-    background: linear-gradient(to bottom, #845ec2, #8d69c5);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .form-button:hover {
-    background-color: #6d49a1;
-  }
-  
+  width: 100%;
+  max-width: 400px;
+  margin: 10rem auto;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sign-in-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #4A4A4A;
+}
+
+.sign-in-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: #7765A3;
+}
+
+.form-button {
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  background: linear-gradient(to bottom, #845ec2, #8d69c5);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-button:hover {
+  background-color: #6d49a1;
+}

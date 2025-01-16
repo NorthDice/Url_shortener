@@ -3,12 +3,15 @@ import "./TableView.css";
 import { fetchUrls } from "../../services/urls";
 import Table from "../Table/Table";
 import Modal from "../Modal/Modal";
+import { useNavigate } from "react-router-dom";
 
 const TableView = () => {
   const [urls, setUrls] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false); 
   const [modalType, setModalType] = useState(""); 
   const [urlInput, setUrlInput] = useState(""); 
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,7 +25,6 @@ const TableView = () => {
 
     fetchData();
   }, []);
-
 
   const openAddModal = () => {
     setModalType("add");
@@ -44,6 +46,10 @@ const TableView = () => {
 
   const columns = ["id", "originalUrl", "shortenedUrl"]; 
 
+  const handleViewUrlClick = () => {
+    navigate("/info"); 
+  };
+
   return (
     <div className="table-view">
       <div className="table-view__buttons">
@@ -53,7 +59,7 @@ const TableView = () => {
         <button className="table-view__button" onClick={openDeleteModal}>
           Delete URL
         </button>
-        <button className="table-view__button" >
+        <button className="table-view__button" onClick={handleViewUrlClick}>
           View URL
         </button>
       </div>

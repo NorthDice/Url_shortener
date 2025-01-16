@@ -11,7 +11,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
 }
 .header a:hover {
-    color: #947ECB;
+    color: #d5ccec;
 }
 .nav-list__link {
     text-decoration: none;
@@ -47,7 +47,7 @@
     transition: color 0.3s ease;
 }
 .action-section a:hover{
-    color: #947ECB;
+    color: #d5ccec;
     cursor: pointer;
 }
 
