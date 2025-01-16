@@ -1,0 +1,70 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal__content {
+    background: #ffffff; 
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    max-width: 400px;
+    width: 90%; 
+    color: black; 
+  }
+  .modal__content input {
+    width: 60%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    color: black; 
+    background: #f9f9f9;
+  }
+  .modal__content h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: #333333;
+  }
+  
+  .modal__buttons {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem; 
+  }
+  
+  .modal__buttons button {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease; 
+    background: linear-gradient(135deg, #7765A3, #a17cc1); 
+    color: #ffffff; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+  }
+  
+  .modal__buttons button:hover {
+    background: linear-gradient(135deg, #a17cc1, #7765A3); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .modal__buttons button:focus {
+    outline: none; 
+    border: 2px solid #7765A3; 
+    box-shadow: 0 0 8px rgba(119, 101, 163, 0.8); 
+  }

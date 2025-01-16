@@ -24,6 +24,7 @@ const InformationView = () => {
               <h1 className="table-view__title">INFORMATION TABLE VIEW</h1>
           </div>
           <div className="table-container">
+
           <Table
               columns={columns}
               data={urls.map((url) => ({
@@ -41,7 +42,6 @@ const InformationView = () => {
               }))}
             />
           </div>
-          
     </>
   )
 }
