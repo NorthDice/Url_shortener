@@ -24,3 +24,13 @@ export const addUrl = async (url) => {
       return null;
     }
   };
+
+  export const deleteUrl = async (id) => {
+    try {
+      const response = await axios.delete(`https://localhost:44367/Url/DeleteUrl?id=${id}`);
+      return response.data;
+    } catch (error) {
+      console.error('Error deleting URL:', error);
+      return null;
+    }
+  };
